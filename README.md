@@ -15,7 +15,7 @@ Example Playbook
 ----------------
     - hosts: terraform_hosts
       roles:
-         - { role: hosninabil.TerraformSetup }
+         - { role: hosninabil.terraformsetup }
 
 License
 -------
