@@ -25,21 +25,21 @@ galaxy_info:
   # To view available platforms and versions (or releases), visit:
   # https://galaxy.ansible.com/api/v1/platforms/
   #
-   platforms:
-   - name: CentOS
-     versions:
-     - 8
-     - 7
-   - name: RHEL
-     versions:
-     - 8
-     - 7
-   - name: Ubuntu
-     versions:
-     - 18.04
-     - 20.04
-  #   - 7
-  #   - 99.99
+  #  platforms:
+  #  - name: CentOS
+  #    versions:
+  #    - 8
+  #    - 7
+  #  - name: RHEL
+  #    versions:
+  #    - 8
+  #    - 7
+  #  - name: Ubuntu
+  #    versions:
+  #    - 18.04
+  #    - 20.04
+  # #   - 7
+  # #   - 99.99
 
   galaxy_tags: [Systems,Terraform]
     # List tags for your role here, one per line. A tag is a keyword that describes
