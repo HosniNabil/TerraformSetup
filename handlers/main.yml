@@ -5,7 +5,7 @@
     - name: Build provider plugin from source
       make:
         chdir: "{{ ansible_env.HOME }}/terraform_libvirt_provider/"
-      environmenet:
+      environmnet:
         PATH: "{{ ansible_env:PATH }}"
     - name: Move provider plugin
       copy:
