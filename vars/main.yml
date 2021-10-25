@@ -2,3 +2,4 @@
 # vars file for TerraformSetup
 golang_url: https://golang.org/dl/go1.17.2.linux-amd64.tar.gz
 terraform_url: https://releases.hashicorp.com/terraform/1.0.9/terraform_1.0.9_linux_amd64.zip
+terraform_libvirt_provider_git: https://github.com/dmacvicar/terraform-provider-libvirt.git
