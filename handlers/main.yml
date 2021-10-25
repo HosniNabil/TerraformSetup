@@ -1,2 +1,15 @@
 ---
 # handlers file for TerraformSetup
+- name: Build provider plugin from source
+  block:
+    - name: Build provider plugin from source
+      make:
+        chdir: "{{ ansible_env.HOME }}/terraform_libvirt_provider/"
+      environmenet:
+        PATH: "{{ ansible_env:PATH }}"
+    - name: Move provider plugin
+      copy:
+        src: "{{ ansible_env.HOME }}/terraform_libvirt_provider/terraform_libvirt_provider"
+        dest: "{{ ansible_env.HOME }}/.local/share/terraform/plugins/registry.terraform.io/dmacvicar/libvirt/0.6.11/linux_amd64"
+        remote_src: yes
+        mode: u+x

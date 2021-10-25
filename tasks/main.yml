@@ -1,10 +1,18 @@
 ---
 # tasks file for TerraformSetup
+- name: Set facts for needed packages
+  set_fact:
+    packages: "git,wget,make,unzip,libvirt-devel,libvirt-gobject"
+  when: kvm_provider == yes
+- name: Set facts for needed packages
+  set_fact:
+    packages: "git,wget,make,unzip"
+  when: kvm_provider == no
 - name: Setup Terraform for Redhat systems
   block:
     - name: Setup needed packages
       yum:
-        name: "git,wget,make,unzip"
+        name: "{{ packages }}"
         state: present
     - name: Ensure Golang is installed
       unarchive:
@@ -25,7 +33,7 @@
   block:
     - name: Setup needed packages
       apt:
-        name: "git,wget,make,unzip"
+        name: "{{ packages }}"
         state: present
     - name: Ensure Hashicorp APT key is present
       apt_key:
@@ -51,3 +59,16 @@
         name: terraform
         state: present
   when: ansible_facts['os_family'] == "Debian"
+- name: Setup libvirt provider
+  block:
+    - name: Create plugins directory
+      file:
+        path: "{{ ansible_env.HOME }}/.local/share/terraform/plugins/registry.terraform.io/dmacvicar/libvirt/0.6.11/linux_amd64"
+        state: directory
+        mode: 0755
+    - name: Clone provider plugin code source
+      git:
+        repo: "{{ terraform_libvirt_provider_git }}"
+        dest: "{{ ansible_env.HOME }}/terraform_libvirt_provider/"
+        force: yes
+      notify: Build provider plugin from source
