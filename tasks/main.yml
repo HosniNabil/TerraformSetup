@@ -59,16 +59,16 @@
         name: terraform
         state: present
   when: ansible_facts['os_family'] == "Debian"
-- name: Setup libvirt provider
-  block:
-    - name: Create plugins directory
-      file:
-        path: "{{ ansible_env.HOME }}/.local/share/terraform/plugins/registry.terraform.io/dmacvicar/libvirt/0.6.11/linux_amd64"
-        state: directory
-        mode: 0755
-    - name: Clone provider plugin code source
-      git:
-        repo: "{{ terraform_libvirt_provider_git }}"
-        dest: "{{ ansible_env.HOME }}/terraform_libvirt_provider/"
-        force: yes
-      notify: Build provider plugin from source
+# - name: Setup libvirt provider
+#   block:
+#     - name: Create plugins directory
+#       file:
+#         path: "{{ ansible_env.HOME }}/.local/share/terraform/plugins/registry.terraform.io/dmacvicar/libvirt/0.6.11/linux_amd64"
+#         state: directory
+#         mode: 0755
+#     - name: Clone provider plugin code source
+#       git:
+#         repo: "{{ terraform_libvirt_provider_git }}"
+#         dest: "{{ ansible_env.HOME }}/terraform_libvirt_provider/"
+#         force: yes
+#       notify: Build provider plugin from source
