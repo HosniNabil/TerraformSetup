@@ -3,11 +3,6 @@
 - name: Set facts for needed packages
   set_fact:
     packages: "git,wget,make,unzip,libvirt-devel,libvirt-gobject"
-  when: kvm_provider == true
-- name: Set facts for needed packages
-  set_fact:
-    packages: "git,wget,make,unzip"
-  when: kvm_provider == false
 - name: Setup Terraform for Redhat systems
   block:
     - name: Setup needed packages
